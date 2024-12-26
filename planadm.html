@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Gerenciar Planos VIP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .vip-container {
+      max-width: 800px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .vip-plan {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .vip-icon {
+      font-size: 24px;
+      color: green;
+      margin-right: 15px;
+    }
+    .vip-details {
+      flex-grow: 1;
+    }
+    .vip-title {
+      font-weight: bold;
+    }
+    .btn-edit, .btn-delete {
+      margin-left: 10px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container vip-container">
+  <div class="header">
+    <h1>Gerenciar Planos VIP</h1>
+    <p>Adicione, edite ou remova os planos VIP</p>
+  </div>
+
+  <!-- Formulário para adicionar plano -->
+  <div class="mb-4">
+    <h3>Adicionar Novo Plano VIP</h3>
+    <form>
+      <div class="mb-3">
+        <label for="tituloPlano" class="form-label">Título do Plano</label>
+        <input type="text" class="form-control" id="tituloPlano" placeholder="Ex: VIP 1 (Diário Rs.108)">
+      </div>
+      <div class="mb-3">
+        <label for="precoPlano" class="form-label">Preço</label>
+        <input type="number" class="form-control" id="precoPlano" placeholder="Ex: 900.00">
+      </div>
+      <div class="mb-3">
+        <label for="cicloPlano" class="form-label">Ciclo (horas)</label>
+        <input type="number" class="form-control" id="cicloPlano" placeholder="Ex: 696">
+      </div>
+      <div class="mb-3">
+        <label for="rendaHora" class="form-label">Renda por Hora</label>
+        <input type="number" class="form-control" id="rendaHora" placeholder="Ex: 4.50">
+      </div>
+      <div class="mb-3">
+        <label for="rendaTotal" class="form-label">Renda Total</label>
+        <input type="number" class="form-control" id="rendaTotal" placeholder="Ex: 3132">
+      </div>
+      <button type="submit" class="btn btn-success">Adicionar Plano</button>
+    </form>
+  </div>
+
+  <!-- Lista de planos existentes -->
+  <div>
+    <h3>Planos Existentes</h3>
+
+    <!-- Plano 1 -->
+    <div class="vip-plan">
+      <div class="vip-details">
+        <div class="vip-title">VIP 1 (Diário Rs.108)</div>
+        <p>Preço: $900,00</p>
+        <p>Ciclo: 696 horas</p>
+        <p>Renda por hora: $4,50</p>
+        <p>Renda total: $3132</p>
+      </div>
+      <button class="btn btn-warning btn-edit">Editar</button>
+      <button class="btn btn-danger btn-delete">Excluir</button>
+    </div>
+
+    <!-- Plano 2 -->
+    <div class="vip-plan">
+      <div class="vip-details">
+        <div class="vip-title">VIP 2 (Diário Rs.180)</div>
+        <p>Preço: $1500,00</p>
+        <p>Ciclo: 696 horas</p>
+        <p>Renda por hora: $7,50</p>
+        <p>Renda total: $5220</p>
+      </div>
+      <button class="btn btn-warning btn-edit">Editar</button>
+      <button class="btn btn-danger btn-delete">Excluir</button>
+    </div>
+
+    <!-- Plano 5 -->
+    <div class="vip-plan">
+      <div class="vip-details">
+        <div class="vip-title">VIP 5 (Diário Rs.1440)</div>
+        <p>Preço: $12.000,00</p>
+        <p>Ciclo: 696 horas</p>
+        <p>Renda por hora: $60,00</p>
+        <p>Renda total: $41.760</p>
+      </div>
+      <button class="btn btn-warning btn-edit">Editar</button>
+      <button class="btn btn-danger btn-delete">Excluir</button>
+    </div>
+
+    <!-- Outros planos seguem a mesma estrutura -->
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

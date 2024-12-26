@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Afiliados - Investimentos em Criptomoedas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #0066cc;
+            border-color: #0066cc;
+        }
+        .btn-success {
+            background-color: #00cc66;
+            border-color: #00cc66;
+        }
+        .crypto-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Card do formulário de afiliados -->
+        <div class="card text-center">
+            <div class="card-header">
+                <h3><i class="fas fa-link"></i> Gere seu link de Afiliado em Criptomoedas</h3>
+            </div>
+            <div class="card-body">
+                <p>Olá, <span id="userName">Usuário Teste</span>! Clique no botão abaixo para gerar seu link de afiliado e comece a ganhar com suas referências.</p>
+                <button class="btn btn-primary" onclick="generateAffiliateLink()">Gerar Link de Afiliado</button>
+
+                <div id="affiliateLinkSection" class="mt-4" style="display: none;">
+                    <h5>Seu link de afiliado:</h5>
+                    <input type="text" class="form-control" id="affiliateLink" readonly>
+                    <button class="btn btn-success mt-2" onclick="copyAffiliateLink()">Copiar Link</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card das referências -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4><i class="fas fa-users"></i> Minhas Referências</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group" id="referralList">
+                    <li class="list-group-item">Nenhuma referência ainda!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card dos ícones de criptomoedas -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4><i class="fas fa-coins"></i> Criptomoedas em Destaque</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-icon">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" class="crypto-icon">
+                <img src="https://cryptologos.cc/logos/ripple-xrp-logo.png" alt="Ripple" class="crypto-icon">
+                <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano" class="crypto-icon">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulação de nome de usuário (pode ser alterado dinamicamente com dados reais)
+        const userName = "UsuárioTeste123";
+        document.getElementById("userName").innerText = userName;
+
+        // Função para gerar link de afiliado
+        function generateAffiliateLink() {
+            const referralLink = `${window.location.origin}/register?ref=${userName}`;
+            document.getElementById("affiliateLink").value = referralLink;
+            document.getElementById("affiliateLinkSection").style.display = 'block';
+
+            // Simula adicionar uma referência no sistema (com data)
+            addReferral(userName);
+        }
+
+        // Função para copiar o link gerado
+        function copyAffiliateLink() {
+            const affiliateLinkInput = document.getElementById("affiliateLink");
+            affiliateLinkInput.select();
+            document.execCommand("copy");
+            alert("Link copiado para a área de transferência!");
+        }
+
+        // Função para adicionar uma referência (exemplo de funcionalidade para o dashboard)
+        function addReferral(ref) {
+            const referralList = document.getElementById("referralList");
+            if (referralList.children[0].innerText === "Nenhuma referência ainda!") {
+                referralList.innerHTML = ''; // Limpar a mensagem inicial
+            }
+
+            const newReferral = document.createElement('li');
+            newReferral.classList.add('list-group-item');
+            const today = new Date().toLocaleDateString();
+            newReferral.innerText = `Referência: ${ref} adicionada em ${today}`;
+
+            referralList.appendChild(newReferral);
+        }
+    </script>
+</body>
+</html>

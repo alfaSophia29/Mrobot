@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Abertura de Conta - ALFAMONEY</title>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .register {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      padding: 2rem;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Formulário de Abertura de Conta -->
+  <section class="register py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <h2 class="text-center mb-4">Abertura de Conta</h2>
+            <form id="formAberturaConta">
+
+              <!-- Nome Completo -->
+              <div class="mb-3">
+                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nomeCompleto" placeholder="Digite seu nome completo" required>
+              </div>
+
+              <!-- Data de Nascimento -->
+              <div class="mb-3">
+                <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="dataNascimento" required>
+              </div>
+
+              <!-- Gênero -->
+              <div class="mb-3">
+                <label for="genero" class="form-label">Gênero</label>
+                <select class="form-select" id="genero" required>
+                  <option value="" disabled selected>Selecione seu gênero</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+
+              <!-- Estado Civil -->
+              <div class="mb-3">
+                <label for="estadoCivil" class="form-label">Estado Civil</label>
+                <select class="form-select" id="estadoCivil" required>
+                  <option value="" disabled selected>Selecione seu estado civil</option>
+                  <option value="solteiro">Solteiro(a)</option>
+                  <option value="casado">Casado(a)</option>
+                  <option value="divorciado">Divorciado(a)</option>
+                  <option value="viuvo">Viúvo(a)</option>
+                </select>
+              </div>
+
+              <!-- Nacionalidade -->
+              <div class="mb-3">
+                <label for="nacionalidade" class="form-label">Nacionalidade</label>
+                <input type="text" class="form-control" id="nacionalidade" placeholder="Digite sua nacionalidade" required>
+              </div>
+
+              <!-- Seletor de País -->
+              <div class="mb-3">
+                <label for="pais" class="form-label">País de Residência</label>
+                <select class="form-select" id="pais" required>
+                  <option value="" disabled selected>Selecione seu país</option>
+                  <option value="brasil">Brasil</option>
+                  <option value="portugal">Portugal</option>
+                  <option value="angola">Angola</option>
+                  <option value="mocambique">Moçambique</option>
+                  <option value="cabo-verde">Cabo Verde</option>
+                  <option value="guine-bissau">Guiné-Bissau</option>
+                  <option value="sao-tome">São Tomé e Príncipe</option>
+                  <option value="timor-leste">Timor-Leste</option>
+                </select>
+              </div>
+
+              <!-- Campo CPF/NIF/BI conforme país -->
+              <div class="mb-3" id="documentoContainer">
+                <label for="documento" class="form-label">Documento</label>
+                <input type="text" class="form-control" id="documento" placeholder="Digite o documento" required>
+              </div>
+
+              <!-- Endereço Completo -->
+              <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço Completo</label>
+                <input type="text" class="form-control" id="endereco" placeholder="Digite seu endereço completo" required>
+              </div>
+
+              <!-- Número de Telefone -->
+              <div class="mb-3">
+                <label for="telefone" class="form-label">Número de Telefone</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="Digite seu número de telefone" required>
+              </div>
+
+              <!-- E-mail -->
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" required>
+              </div>
+
+              <!-- Senha -->
+              <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Crie uma senha" required>
+              </div>
+
+              <!-- Foto de Perfil -->
+              <div class="mb-3">
+                <label for="fotoPerfil" class="form-label">Foto de Perfil</label>
+                <input type="file" class="form-control" id="fotoPerfil" accept="image/*" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Criar Conta</button>
+              <div class="text-center mt-3">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const paisSelect = document.getElementById('pais');
+    const documentoInput = document.getElementById('documento');
+    const documentoLabel = document.querySelector('label[for="documento"]');
+    const telefoneInput = document.getElementById('telefone');
+
+    // Mapeamento dos códigos de telefone e documentos obrigatórios
+    const countryData = {
+      'brasil': { code: '+55', doc: 'CPF', placeholder: 'Digite seu CPF' },
+      'portugal': { code: '+351', doc: 'NIF', placeholder: 'Digite seu NIF (Número de Identificação Fiscal)' },
+      'angola': { code: '+244', doc: 'Bilhete de Identidade', placeholder: 'Digite seu BI' },
+      'mocambique': { code: '+258', doc: 'Bilhete de Identidade', placeholder: 'Digite seu BI' },
+      'cabo-verde': { code: '+238', doc: 'Número de Identificação Nacional (NIN)', placeholder: 'Digite seu NIN' },
+      'guine-bissau': { code: '+245', doc: 'Número de Identificação Nacional (NIN)', placeholder: 'Digite seu NIN' },
+      'sao-tome': { code: '+239', doc: 'Cartão de Cidadão', placeholder: 'Digite seu Cartão de Cidadão' },
+      'timor-leste': { code: '+670', doc: 'Número de Identificação Civil (NIC)', placeholder: 'Digite seu NIC' }
+    };
+
+    // Função para atualizar o campo de documento e telefone baseado no país selecionado
+    paisSelect.addEventListener('change', function () {
+      const selectedCountry = this.value;
+      const countryInfo = countryData[selectedCountry];
+
+      if (countryInfo) {
+        documentoLabel.textContent = countryInfo.doc;
+        documentoInput.placeholder = countryInfo.placeholder;
+        documentoInput.setAttribute('required', true);
+        telefoneInput.value = countryInfo.code;
+      }
+    });
+  </script>
+
+</body>
+
+</html>
